@@ -78,8 +78,11 @@ namespace WeChip.Web.Controllers
             cliente.Nome = model.Nome;
             cliente.Telefone = model.Telefone;
             cliente.Cpf = model.Cpf;
-            cliente.Credito = model.Credito;
-            cliente.StatusAtualId = model.StatusAtualId == 0 ? 1 : cliente.StatusAtualId;
+            if (model.Id == 0)
+            {
+                cliente.Credito = model.Credito;
+                cliente.StatusAtualId = 1;
+            }
 
             cliente.EnderecoEntrega ??= new Cliente.Endereco();
             cliente.EnderecoEntrega.Rua = model.EnderecoEntrega.Rua;
