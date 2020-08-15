@@ -1,0 +1,63 @@
+﻿@model ICollection<WeChip.Domain.Entities.Oferta>
+@{
+    ViewData["Title"] = "Ofertas";
+}
+
+<div class="text-left">
+    <h1 class="display-4">Ofertas</h1>
+    <br />
+    <button class="btn btn-outline-dark adicionar">Adicionar Oferta</button>
+</div>
+
+<table class="table table-bordered table-hover mt-3">
+    <thead class="thead-dark">
+    <tr>
+        <th>Id</th>
+        <th>Cliente</th>
+        <th>Produtos</th>
+    </tr>
+    </thead>
+    <tbody>
+    @if (!Model.Any())
+    {
+        <tr>
+            <td colspan="7" class="text-center">Não há ofertas cadastradas!</td>
+        </tr>
+    }
+    @foreach (var oferta in Model)
+    {
+        <tr>
+            <td>@oferta.Id</td>
+            <td>@oferta.Cliente.Nome</td>
+            <td>
+                @foreach (var ofertaProduto in oferta.OfertaProdutos)
+                {
+                    <span>
+                        @ofertaProduto.Produto.Descricao: @ofertaProduto.Produto.CodigoProduto <br/>
+                    </span>
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<div class="modal fade"></div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        })
+
+        $(document).on('click',
+            '.adicionar',
+            function () {
+                $.get("@Url.Action("Form")",
+                    function(data) {
+                        $('.modal').html(data).modal('show');
+                    });
+            });
+    </script>
+}

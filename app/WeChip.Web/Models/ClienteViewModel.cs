@@ -1,19 +1,25 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace WeChip.Domain.Entities
+namespace WeChip.Web.Models
 {
-    public class Cliente : Entity
+    public class ClienteViewModel
     {
+        public int Id { get; set; }
+
+        [Required(ErrorMessage = "Campo obrigatório")]
         public string Nome { get; set; }
         public string Cpf { get; set; }
+
+        [Required(ErrorMessage = "Campo obrigatório")]
         public string Telefone { get; set; }
         public string Credito { get; set; }
         public int StatusAtualId { get; set; }
 
-        public Status StatusAtual { get; set; }
         public Endereco EnderecoEntrega { get; set; }
-
-        public ICollection<Oferta> Ofertas { get; set; }
 
         public class Endereco
         {

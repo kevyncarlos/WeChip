@@ -1,4 +1,5 @@
-﻿using WeChip.Domain.Enums;
+﻿using System.Collections.Generic;
+using WeChip.Domain.Enums;
 
 namespace WeChip.Domain.Entities
 {
@@ -7,6 +8,8 @@ namespace WeChip.Domain.Entities
         public string Descricao { get; set; }
         public string Preco { get; set; }
         public TipoProduto Tipo { get; set; }
-        public int CodigoProduto { get; set; }
+        public string CodigoProduto { get; set; }
+
+        public ICollection<OfertaProduto> OfertaProdutos { get; set; }
     }
 }

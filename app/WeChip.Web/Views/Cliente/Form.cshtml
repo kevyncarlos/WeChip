@@ -1,0 +1,107 @@
+﻿@model ClienteViewModel
+
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">@ViewBag.Title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <form asp-action="Form" method="post">
+            <input type="hidden" asp-for="Id" />
+            <div class="modal-body">
+                <fieldset>
+                    <legend>Dados Gerais</legend>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label asp-for="Nome">Nome*</label>
+                                <input asp-for="Nome" class="form-control"/>
+                                <span asp-validation-for="Nome"></span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label asp-for="Cpf">CPF</label>
+                                <input asp-for="Cpf" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="Telefone">Telefone*</label>
+                                <input asp-for="Telefone" class="form-control" />
+                                <span asp-validation-for="Telefone"></span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="Credito">Crédito</label>
+                                @if (Model != null)
+                                {
+                                    <input asp-for="Credito" class="form-control" disabled=""/>
+                                }
+                                else
+                                {
+                                    <input asp-for="Credito" class="form-control" />
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Endereço</legend>
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="EnderecoEntrega.Cep">CEP</label>
+                                <input asp-for="EnderecoEntrega.Cep" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="EnderecoEntrega.Estado">Estado</label>
+                                <input asp-for="EnderecoEntrega.Estado" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="EnderecoEntrega.Cidade">Cidade</label>
+                                <input asp-for="EnderecoEntrega.Cidade" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="form-group">
+                                <label asp-for="EnderecoEntrega.Rua">Rua</label>
+                                <input asp-for="EnderecoEntrega.Rua" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="EnderecoEntrega.Numero">Número</label>
+                                <input asp-for="EnderecoEntrega.Numero" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="EnderecoEntrega.Bairro">Bairro</label>
+                                <input asp-for="EnderecoEntrega.Bairro" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="form-group">
+                                <label asp-for="EnderecoEntrega.Complemento">Complemento</label>
+                                <input asp-for="EnderecoEntrega.Complemento" class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </form>
+    </div>
+</div>

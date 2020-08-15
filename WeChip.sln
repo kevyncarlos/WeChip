@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeChip.Data", "app\WeChip.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeChip.WebAPI", "app\WeChip.WebAPI\WeChip.WebAPI.csproj", "{ACC8DAE8-290E-438D-9E05-4DDFA8F5626C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeChip.Business", "app\WeChip.Business\WeChip.Business.csproj", "{7C16BF3B-BEF4-4FA0-884B-66B1781C736C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeChip.Access", "app\WeChip.Access\WeChip.Access.csproj", "{7C16BF3B-BEF4-4FA0-884B-66B1781C736C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeChip.Domain", "app\WeChip.Domain\WeChip.Domain.csproj", "{03E320CA-BF62-4FA8-8F02-FD91A6CA4CE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeChip.Domain", "app\WeChip.Domain\WeChip.Domain.csproj", "{03E320CA-BF62-4FA8-8F02-FD91A6CA4CE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,0 +1,85 @@
+﻿@model ICollection<WeChip.Domain.Entities.Cliente>
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+<div class="text-left">
+    <h1 class="display-4">Clientes</h1>
+    <br />
+    <button class="btn btn-outline-dark cadastrar">Cadastrar</button>
+</div>
+
+<table class="table table-bordered table-hover mt-3">
+    <thead class="thead-dark">
+    <tr>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Telefone</th>
+        <th>Crédito</th>
+        <th>Status Atual</th>
+        <th>Endereço</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @if (!Model.Any())
+    {
+        <tr>
+            <td colspan="7" class="text-center">Não há clientes cadastrados!</td>
+        </tr>
+    }
+    @foreach (var cliente in Model)
+    {
+        <tr>
+            <td>@cliente.Nome</td>
+            <td>@cliente.Cpf</td>
+            <td>@cliente.Telefone</td>
+            <td>@cliente.Credito</td>
+            <td>@cliente.StatusAtual.Descricao</td>
+            <td>
+                CEP: @cliente.EnderecoEntrega.Cep <br />
+                Cidade: @cliente.EnderecoEntrega.Cidade <br/>
+                Estado: @cliente.EnderecoEntrega.Estado <br />
+                Detalhes: <i class="badge badge-dark bs-tooltip-left" data-toggle="tooltip" data-placement="top" data-html="true" title="Rua: @cliente.EnderecoEntrega.Rua <br/> Numero: @cliente.EnderecoEntrega.Numero <br/> Bairro: @cliente.EnderecoEntrega.Bairro <br/> Complemento: @cliente.EnderecoEntrega.Complemento">i</i>
+            </td>
+            <td>
+                <button class="btn btn-outline-info editar" data-id="@cliente.Id">Editar</button>
+                <button class="btn btn-outline-danger deletar" data-id="@cliente.Id">Deletar</button>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<div class="modal fade"></div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        })
+
+        $(document).on('click',
+            '.cadastrar, .editar',
+            function() {
+                var id = $(this).data('id');
+
+                $.get("@Url.Action("Form")",
+                    { id: id },
+                    function(data) {
+                        $('.modal').html(data).modal('show');
+                    });
+            });
+
+        $(document).on('click',
+            '.deletar',
+            function () {
+                var id = $(this).data('id');
+
+                if (confirm("Deseja realmente deletar?")) {
+                    location.href = "@Url.Action("Delete")/" + id;
+                }
+            });
+    </script>
+}
